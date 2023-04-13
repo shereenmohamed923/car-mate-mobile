@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'screens/authorization.dart';
+import 'package:car_mate/screens/login_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'CarMate',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
           accentColor: Colors.white,
           //fontFamily: 'inter',
           outlinedButtonTheme: OutlinedButtonThemeData(
@@ -25,7 +28,12 @@ class MyApp extends StatelessWidget {
             //disabledBackgroundColor: Colors.white,
           ))),
       home: authorizationScreen(),
-      routes: {},
+      routes: {
+        loginScreen.routeName: (ctx) => loginScreen(),
+        HomeScreen.routeName: (ctx) => HomeScreen(),
+      },
     );
   }
 }
+//shereen mohamed
+//gfjloh
