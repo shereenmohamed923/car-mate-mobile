@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/signup_screen.dart';
-import './screens/signin_screen.dart';
-import 'screens/home_screen.dart';
+import 'screens/signin_screen.dart';
+import 'screens/tabs_screen.dart';
+import 'screens/market_screen.dart';
+import 'screens/map_screen.dart';
+import 'screens/rents_screen.dart';
+import 'screens/user_profile_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,33 +16,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(
-          value: Auth(),
-        )
-      ],
-      child: MaterialApp(
-          title: 'CarMate',
-          theme: ThemeData(
-              primarySwatch: Colors.blue,
-              accentColor: Colors.white,
-              outlinedButtonTheme: OutlinedButtonThemeData(
-                  style: OutlinedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7),
-                ),
-                side: BorderSide(color: Colors.blue, width: 2),
-                fixedSize: Size(140, 40),
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.grey[800],
-                //disabledBackgroundColor: Colors.white,
-              ))),
-          home: SignUpScreen(),
-          routes: {
-            SignUpScreen.routeName: (ctx) => SignUpScreen(),
-            SignInScreen.routeName: (ctx) => SignInScreen(),
-            HomeScreen.routeName: (ctx) => HomeScreen(),
-          }),
-    );
+        providers: [
+          ChangeNotifierProvider.value(
+            value: Auth(),
+          )
+        ],
+        child: Consumer<Auth>(
+          builder: (ctx, auth, _) => MaterialApp(
+              title: 'CarMate',
+              theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                  accentColor: Colors.grey[800],
+                  outlinedButtonTheme: OutlinedButtonThemeData(
+                      style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    side: BorderSide(color: Colors.blue, width: 2),
+                    fixedSize: Size(140, 40),
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.grey[800],
+                    //disabledBackgroundColor: Colors.white,
+                  ))),
+              home: auth.isAuth ? TabsScreen() : SignInScreen(),
+              routes: {
+                SignUpScreen.routeName: (ctx) => SignUpScreen(),
+                SignInScreen.routeName: (ctx) => SignInScreen(),
+                TabsScreen.routeName : (ctx) => TabsScreen(),
+                MapScreeen.routeName: (ctx) => MapScreeen(),
+                MarketScreen.routeName: (ctx) => MarketScreen(),
+                RentsScreen.routeName: (ctx) => RentsScreen(),
+                UserProfileScreen.routeName: (ctx) => UserProfileScreen(),
+              }),
+        ));
   }
 }
