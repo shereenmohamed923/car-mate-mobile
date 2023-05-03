@@ -19,7 +19,7 @@ class _TabsScreenState extends State<TabsScreen> {
       'title': 'map',
     },
     {
-      'page': MarketScreen(),
+      'page': ProductsOverviewScreen(),
       'title': 'market',
     },
     {

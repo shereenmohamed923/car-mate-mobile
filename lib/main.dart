@@ -1,7 +1,9 @@
 import 'package:car_mate/providers/auth.dart';
+import 'package:car_mate/providers/product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './providers/products.dart';
 import 'screens/signup_screen.dart';
 import 'screens/signin_screen.dart';
 import 'screens/tabs_screen.dart';
@@ -17,9 +19,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider.value(
-            value: Auth(),
-          )
+          ChangeNotifierProvider(
+          create: (ctx) => Products(),
+        ),
+          ChangeNotifierProvider(
+            create: (ctx) => Auth(),
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => Product(),
+          ),
         ],
         child: Consumer<Auth>(
           builder: (ctx, auth, _) => MaterialApp(
@@ -44,7 +52,7 @@ class MyApp extends StatelessWidget {
                 SignInScreen.routeName: (ctx) => SignInScreen(),
                 TabsScreen.routeName : (ctx) => TabsScreen(),
                 MapScreeen.routeName: (ctx) => MapScreeen(),
-                MarketScreen.routeName: (ctx) => MarketScreen(),
+                ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
                 RentsScreen.routeName: (ctx) => RentsScreen(),
                 UserProfileScreen.routeName: (ctx) => UserProfileScreen(),
               }),
