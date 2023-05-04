@@ -20,7 +20,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             Container(child: Text('user profile page'), alignment: Alignment.center,),
             ListTile(
           title: Text('LogOut'),
-          leading: Icon(Icons.exit_to_app),
+          leading: Icon(Icons.logout),
           onTap: () {
             Provider.of<Auth>(context, listen: false).logout();
           }

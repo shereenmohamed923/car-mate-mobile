@@ -52,12 +52,12 @@ class _TabsScreenState extends State<TabsScreen> {
         items: [
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).accentColor,
-            icon: Icon(Icons.location_pin),
+            icon: Icon(Icons.fmd_good),
             label: '',
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).accentColor,
-            icon: Icon(Icons.shopify),
+            icon: Icon(Icons.storefront),
             label: '',
           ),
           BottomNavigationBarItem(
@@ -67,7 +67,7 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).accentColor,
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.account_circle_outlined),
             label: '',
           ),
         ],

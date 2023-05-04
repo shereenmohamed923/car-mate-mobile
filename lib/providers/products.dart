@@ -12,42 +12,37 @@ class Products with ChangeNotifier {
     return [..._items];
   }
 
-  // Product findById(String id) {
-  //   return _items.firstWhere((prod) => prod.id == id);
-  // }
-
   Future<void> fetchAndSetProducts() async {
     var url =
-        Uri.parse('https://car-mate-t012.onrender.com/api/v1/prodcuts?sort=-Price&limit=5&page=2');
+        Uri.parse('https://car-mate-t012.onrender.com/api/v1/prodcuts');
     try {
-      final response = await http.get(url, headers: {
-          'content-type': 'application/json',
-          'Accept': 'application/json',
-        },);
-      final extractedData = json.decode(response.body) as Map<String, dynamic>;
-      print(extractedData);
-      
-      final List<Product> loadedProducts = [];
-      extractedData.forEach((prodId, prodData) {
+      final response = await http.get(url);
+      final extractedData = json.decode(response.body) as Map<dynamic, dynamic>;
+      //print(extractedData);
+       List<Product> loadedProducts = [];
+      extractedData['product'].forEach((prodData) {
         loadedProducts.add(Product(
-          ratings: prodData['data']['product']['Ratings'],
-          images: prodData['data']['product']['Images'],
-          sold: prodData['data']['product']['Sold'],
-          buyers: prodData['data']['product']['Buyers'],
-          id: prodData['data']['product']['_id'],
-          name: prodData['product']['Name'],
-          condition: prodData['data']['Condition'],
-          description: prodData['data']['product']['Description'],
-          price: prodData['data']['product']['Price'],
-          quantity: prodData['data']['product']['Quantity'],
-          location: prodData['data']['product']['Location'],
-          owner: prodData['data']['product']['Owner'],
-          address: prodData['data']['product']['Address'],
-          type: prodData['data']['product']['Type'],
+          ratings: prodData['Ratings'],
+          ratingsAverage: prodData['RatingsAverage'],
+          ratingsSum: prodData['RatingsSum'],
+          images: prodData['Images'],
+          sold: prodData['Sold'],
+          buyers: prodData['Buyers'],
+          id: prodData['_id'],
+          name: prodData['Name'],
+          condition: prodData['Condition'],
+          description: prodData['Description'],
+          price: prodData['Price'],
+          quantity: prodData['Quantity'],
+          //location: prodData['Location'],
+          owner: prodData['Owner'],
+          address: prodData['Address'],
+          type: prodData['Type'],
           imageCover: prodData['imageCover'],
-        ));
-        
-      });
+        ),);
+      }
+      );
+      print(loadedProducts[2].ratingsAverage);
       _items = loadedProducts;
       notifyListeners();
     } catch (error) {
