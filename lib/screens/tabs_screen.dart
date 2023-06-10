@@ -45,28 +45,28 @@ class _TabsScreenState extends State<TabsScreen> {
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).hintColor,
         unselectedItemColor: Colors.white,
         selectedItemColor: Theme.of(context).primaryColor,
         currentIndex: _selectedPageIndex,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).accentColor,
+            backgroundColor: Theme.of(context).hintColor,
             icon: Icon(Icons.fmd_good),
             label: '',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).accentColor,
+            backgroundColor: Theme.of(context).hintColor,
             icon: Icon(Icons.storefront),
             label: '',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).accentColor,
+            backgroundColor: Theme.of(context).hintColor,
             icon: Icon(Icons.car_rental),
             label: '',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).accentColor,
+            backgroundColor: Theme.of(context).hintColor,
             icon: Icon(Icons.account_circle_outlined),
             label: '',
           ),

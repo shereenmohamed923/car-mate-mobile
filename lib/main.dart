@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './providers/products.dart';
+
 import 'screens/signup_screen.dart';
 import 'screens/signin_screen.dart';
 import 'screens/tabs_screen.dart';
@@ -11,6 +12,8 @@ import 'screens/market_screen.dart';
 import 'screens/map_screen.dart';
 import 'screens/rents_screen.dart';
 import 'screens/user_profile_screen.dart';
+import 'screens/forget_password_screen.dart';
+import 'screens/reset_password_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -55,6 +58,9 @@ class MyApp extends StatelessWidget {
                 ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
                 RentsScreen.routeName: (ctx) => RentsScreen(),
                 UserProfileScreen.routeName: (ctx) => UserProfileScreen(),
+                forget_password_screen.routeName:(ctx)  => forget_password_screen(),
+                reset_password_screen.routeName:(ctx)  => reset_password_screen(),
+                
               }),
         ));
   }

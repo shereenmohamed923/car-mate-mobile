@@ -1,10 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'signup_screen.dart';
 import 'market_screen.dart';
 import '../providers/auth.dart';
 import '../models/http_exception.dart';
+import 'forget_password_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   static const routeName = '/signin-screen';
@@ -226,8 +227,22 @@ class _SignInScreen extends State<SignInScreen> {
                           style: Theme.of(context).outlinedButtonTheme.style,
                           onPressed: _submitSignIn,
                         ),
+
+
                       ],
                     ),
+                    SizedBox(height: 30,),
+Row(children: [Container(width: 110,height: 40,child: Text('Remember Me',style: TextStyle(fontFamily: 'Inter',fontWeight: FontWeight.w400,fontSize: 12,color: Colors.white,),),
+
+
+),
+SizedBox(width: 100,),
+Container(width: 120,height: 32,child:TextButton(style:ButtonStyle(),onPressed: (){Navigator.of(context).pushNamed(forget_password_screen.routeName,);},child: Text('Forget Password?',style: TextStyle(decoration: TextDecoration.underline,fontFamily: 'Inter',fontWeight: FontWeight.w400,fontSize: 12,color: Colors.blue),),),)
+
+],)
+
+
+
                 ],
               ),
             ),

@@ -63,3 +63,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     );
   }
 }
+
+class ProductsGrid {
+}
